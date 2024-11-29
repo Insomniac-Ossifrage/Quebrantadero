@@ -1,0 +1,8 @@
+# Default
+* text=auto eol=lf
+
+# Wildcards
+*.sh text
+
+# Filenames
+Dockerfile text
