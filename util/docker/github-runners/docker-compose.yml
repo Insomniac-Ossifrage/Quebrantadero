@@ -1,0 +1,21 @@
+name: ${SERVICE_NAME}
+services:
+  runner:
+    image: ghcr.io/actions/actions-runner:${GH_RUNNER_VER}
+
+    deploy:
+      resources:
+        limits:
+          cpus: ${GH_RUNNER_CPU_COUNT}
+    
+    environment:
+      GH_ACCESS_TOKEN: ${GH_ACCESS_TOKEN}
+      GH_REPOSITORY_URL: ${GH_REPOSITORY_URL}
+      GH_RUNNER_GROUP: ${GH_RUNNER_GROUP}
+      GH_RUNNER_PREFIX: ${GH_RUNNER_PREFIX}
+    volumes:
+      - ./entrypoint.sh:/home/runner/entrypoint.sh
+
+    entrypoint: /home/runner/entrypoint.sh
+    
+    restart: unless-stopped
