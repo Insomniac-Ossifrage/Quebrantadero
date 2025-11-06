@@ -1,0 +1,17 @@
+services:
+  service:
+    image: sveigas/actions-image:latest
+    restart: on-failure:3
+    environment:
+     - REPO=Insomniac-Ossifrage/###
+     - TOKEN=ghp_###
+    deploy:
+       mode: replicated
+       replicas: 4
+       resources:
+         limits:
+           cpus: '0.5'
+           memory: 4G
+         reservations:
+           cpus: '0.25'
+           memory: 1G
